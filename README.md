@@ -1,6 +1,6 @@
 ## Real-time Chat Application
 
-Experimenting with real-time chat application using Node.js, Express and Socket.io
+Real-time chat application using Node.js, Express and Socket.io
 
 ## Tech
 
