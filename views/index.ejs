@@ -15,8 +15,8 @@
             <input id="input" autocomplete="off" /><button>Send</button>
         </form>
 
-        <!-- Note: The order of loading is important.               -->
         <script src="/socket.io/socket.io.js"></script>
+        <!-- =-=-=-=-=-=-=-=-order of loading ^ is important-=-=-=-=-=-=-=-= -->
         <script>
             var socket = io();
             var form = document.getElementById("form");
