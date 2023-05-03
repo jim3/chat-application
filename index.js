@@ -19,17 +19,20 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
+    // emits the "user connected" event 
+    socket.broadcast.emit("user connected", `${socket.id} has joined the chat`); // all *except* the sender
+
     socket.on("chat message", (msg) => {
         console.log("message: " + msg);
+        io.emit("chat message", msg);
     });
-});
 
-app.use((req, res, next) => {
-    res.locals.io = io;
-    next();
+    // emits the "user disconnected" events
+    socket.on("disconnect", () => {
+        io.emit("user disconnected", `${socket.id} has left the chat`); // all *including* the sender
+    });
 });
 
 server.listen(3000, () => {
     console.log("listening on *:3000");
 });
-
