@@ -37,6 +37,7 @@
                 messages.appendChild(item);
                 window.scrollTo(0, document.body.scrollHeight);
             });
+            
             // Broadcast a message to connected users when someone connects and print it out on chat page
             // Adds event listener for when a user connects
             socket.on("user connected", function (msg) {

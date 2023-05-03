@@ -1,6 +1,6 @@
 ## Real-time Chat Application
 
-A real-time chat application using Node.js, Express and Socket.io
+Experimenting with real-time chat application using Node.js, Express and Socket.io
 
 ## Tech
 
@@ -8,7 +8,7 @@ A real-time chat application using Node.js, Express and Socket.io
 -   [Express](https://expressjs.com/) - fast node.js network app framework
 -   [Socket.io](https://socket.io/) - enables real-time bidirectional event-based communication
 
-## Things to implement (checkboxes)
+## Things to implement (in my free time, not a priority project...)
 
 -   [x] Broadcast a message to connected users when someone connects or disconnects.
 -   [] Add support for nicknames.
