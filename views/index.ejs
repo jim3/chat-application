@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Socket.IO chat</title>
+    </head>
+    <head>
+        <title>EJS File</title>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    </head>
+    <body>
+        <h3>Socket.IO chat</h3>
+
+        <ul id="messages"></ul>
+
+        <form id="form" action="">
+            <input id="input" autocomplete="off" /><button>Send</button>
+        </form>
+
+        <!-- Note: The order of loading is important.               -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io();
+            var form = document.getElementById("form");
+            var input = document.getElementById("input");
+            // event handler for new incoming messages
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                if (input.value) {
+                    socket.emit("chat message", input.value);
+                    input.value = "";
+                }
+            });
+        </script>
+        <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+    </body>
+</html>
