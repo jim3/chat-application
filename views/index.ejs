@@ -16,18 +16,43 @@
         </form>
 
         <script src="/socket.io/socket.io.js"></script>
-        <!-- =-=-=-=-=-=-=-=-order of loading ^ is important-=-=-=-=-=-=-=-= -->
+        <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
         <script>
             var socket = io();
+            var messages = document.getElementById("messages");
             var form = document.getElementById("form");
             var input = document.getElementById("input");
-            // event handler for new incoming messages
+
             form.addEventListener("submit", function (e) {
                 e.preventDefault();
                 if (input.value) {
                     socket.emit("chat message", input.value);
                     input.value = "";
                 }
+            });
+
+            socket.on("chat message", function (msg) {
+                var item = document.createElement("li");
+                item.textContent = msg;
+                messages.appendChild(item);
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+            // Broadcast a message to connected users when someone connects and print it out on chat page
+            // Adds event listener for when a user connects
+            socket.on("user connected", function (msg) {
+                var item = document.createElement("li");
+                item.textContent = msg;
+                messages.appendChild(item);
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+
+            // Broadcast a message to connected users when someone disconnects and print it out on chat page
+            // Adds event listener for when a user disconnects
+            socket.on("user disconnected", function (msg) {
+                var item = document.createElement("li");
+                item.textContent = msg;
+                messages.appendChild(item);
+                window.scrollTo(0, document.body.scrollHeight);
             });
         </script>
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
